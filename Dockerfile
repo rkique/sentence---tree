@@ -36,4 +36,4 @@ RUN sed -i 's|venv/bin/activate|/opt/venv/bin/activate|g' /app/bdev.sh
 
 EXPOSE 5001 3000
 
-CMD ["/run.sh"]
+CMD ["./run.sh"]
