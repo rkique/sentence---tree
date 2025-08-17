@@ -1,0 +1,294 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&display=swap');
+
+@import "tailwindcss";
+
+/* Tailwind v4 CSS-based configuration */
+@theme {
+  /* Newspaper-style fonts */
+  --font-serif: "Playfair Display", "Times New Roman", Times, serif;
+  --font-body: "Crimson Text", Georgia, serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  /* Greyscale newspaper color palette (higher contrast) */
+  --color-newspaper-cream: #f8fafc;       /* very light */
+  --color-newspaper-parchment: #f1f5f9;   /* light paper */
+  --color-newspaper-aged: #e2e8f0;        /* subtle mid */
+  --color-newspaper-sepia: #cbd5e1;       /* light cool gray */
+  --color-newspaper-brown-light: #94a3b8; /* cool gray light */
+  --color-newspaper-brown: #64748b;       /* mid gray */
+  --color-newspaper-brown-dark: #0f172a;  /* deep charcoal (strong contrast) */
+  --color-newspaper-charcoal: #0b1220;    /* near-black for text */
+  --color-newspaper-ink: #030615;         /* primary ink (very dark) */
+
+  /* Tree visualization colors - greyscale */
+  --color-tree-leaf: #111827;     /* dark node (leaves) */
+  --color-tree-internal: #6b7280; /* medium gray for internals */
+  --color-tree-link: #374151;     /* link strokes */
+  --color-tree-hover: #0b1220;    /* hover accent */
+
+  /* Status colors - subtle and grayscale-friendly */
+  --color-success-50: #f1f5f9;
+  --color-success-500: #475569;
+  --color-success-600: #334155;
+  --color-success-700: #1f2937;
+
+  --color-warning-50: #f8fafc;
+  --color-warning-500: #94a3b8;
+  --color-warning-600: #64748b;
+  --color-warning-700: #475569;
+
+  --color-error-50: #fef2f2;
+  --color-error-500: #7f1d1d;
+  --color-error-600: #5c1010;
+  --color-error-700: #3b0b0b;
+  --bg-status-error: #2b0b0b;
+
+  /* Custom spacing */
+  --spacing-18: 4.5rem;
+  --spacing-88: 22rem;
+  --spacing-128: 32rem;
+
+  /* Custom animations (names only) - keyframes live outside @theme */
+  --animate-fade-in: fadeIn 0.5s ease-in-out;
+  --animate-slide-up: slideUp 0.3s ease-out;
+  --animate-slide-down: slideDown 0.3s ease-out;
+  --animate-bounce-subtle: bounceSubtle 2s infinite;
+  --animate-pulse-slow: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+
+  /* Custom shadows */
+  --shadow-glow: 0 0 20px rgba(59, 130, 246, 0.5);
+  --shadow-glow-amber: 0 0 20px rgba(245, 158, 11, 0.5);
+}
+
+/* Keyframes */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes bounceSubtle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+/* Custom component classes */
+@layer components {
+  /* Newspaper-style main background */
+  .main-bg {
+    background: linear-gradient(145deg, var(--color-newspaper-cream) 0%, var(--color-newspaper-parchment) 100%);
+    /* min-height: 100vh; */
+  }
+  
+  /* Newspaper header title */
+  .newspaper-title {
+    font-family: var(--font-serif);
+    font-size: 4.5rem;
+    font-weight: 900;
+    color: var(--color-newspaper-ink);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    letter-spacing: -0.02em;
+    line-height: 0.9;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    border-bottom: 3px double var(--color-newspaper-brown);
+    padding-bottom: 1rem;
+  }
+  
+  /* Newspaper subtitle */
+  .newspaper-subtitle {
+    font-family: var(--font-body);
+  font-size: 1.05rem;
+  color: var(--color-newspaper-brown);
+  text-align: center;
+  font-style: italic;
+  margin: 0 1rem;
+  letter-spacing: 0.08em;
+  }
+  
+  /* Article content styling */
+  .article-content {
+    background: var(--color-newspaper-cream);
+    border: 2px solid var(--color-newspaper-sepia);
+    box-shadow: 0 4px 12px rgba(139, 115, 85, 0.2);
+    font-family: var(--font-body);
+  }
+  
+  /* Newspaper date header */
+  .newspaper-date-header {
+  display: block;
+  padding: 0 0.5rem 1.25rem 0.5rem;
+  text-align: center;
+  font-family: var(--font-body);
+  width: 100%;
+  margin-bottom: 0.5rem;
+  border-bottom: 3px double var(--color-newspaper-brown);
+  }
+  
+  .newspaper-date {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-newspaper-ink);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  flex: 0 0 auto;
+  }
+  
+  .newspaper-edition {
+    font-size: 0.8rem;
+    color: var(--color-newspaper-brown);
+    font-style: italic;
+    margin: 0 0 0 0;
+    letter-spacing: 0.08em;
+    flex: 0 0 auto;
+  }
+
+  /* row inside the date header to align items horizontally */
+  .date-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 3px double var(--color-newspaper-brown);
+  }
+
+  /* the thin masthead rule below the date/title/edition */
+  .masthead-rule {
+    height: 2px;
+    background: linear-gradient(90deg, var(--color-newspaper-brown) 0%, var(--color-newspaper-brown-dark) 100%);
+    margin: 0.25rem 0 1rem 0;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0.9;
+  }
+  
+  /* Form styling for newspaper input */
+  .form-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem;
+    /* background: var(--color-newspaper-parchment); */
+    border-top: 1px solid var(--color-newspaper-sepia);
+    border-bottom: 1px solid var(--color-newspaper-sepia);
+    /* margin: 2rem 0; */
+    font-family: var(--font-body);
+  }
+
+  .form-sibling {
+    color: var(--color-newspaper-brown-dark);
+    transition: color 0.2s ease;
+    font-size: 2.5rem;
+    font-weight: 600;
+    font-family: var(--font-body);
+  }
+
+  .form-group:focus-within .form-sibling {
+    color: var(--color-newspaper-ink);
+  }
+
+  .form-input {
+    background: var(--color-newspaper-cream);
+    border: 2px solid var(--color-newspaper-sepia);
+    border-radius: 4px;
+    padding: 1rem;
+    font-size: 2.5rem;
+    font-family: var(--font-body);
+    color: var(--color-newspaper-ink);
+    min-width: 300px;
+    transition: all 0.2s ease;
+  }
+  
+  .form-input:focus {
+    box-shadow: 0 0 0 3px rgba(107, 91, 71, 0.1);
+    outline: none;
+  }
+  
+  /* Tree visualization container */
+  .tree-container {
+    background: var(--color-newspaper-cream);
+  }
+  
+  /* Legend styling */
+  .tree-legend {
+    position: absolute;
+    width: 100vw;
+    bottom: 0;
+    background: var(--color-newspaper-aged);
+    border-top: 2px solid var(--color-newspaper-brown);
+    font-family: var(--font-body);
+    color: var(--color-newspaper-brown-dark);
+  }
+  
+  /* Button styling */
+  .btn-primary {
+    background: var(--color-newspaper-brown-dark);
+    color: var(--color-newspaper-cream);
+    border: 2px solid var(--color-newspaper-brown);
+    padding: 0.75rem 2rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+  }
+  
+  .btn-primary:hover {
+    background: var(--color-newspaper-brown);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(107, 91, 71, 0.3);
+  }
+  
+  /* Loading states */
+  .loading-text {
+    color: var(--color-newspaper-brown);
+    font-family: var(--font-body);
+    font-style: italic;
+  }
+  
+  /* Error states */
+  .error-text {
+    color: var(--color-error-700);
+    background: var(--color-newspaper-parchment);
+    border: 1px solid var(--color-error-500);
+    padding: 1rem;
+    border-radius: 4px;
+    font-family: var(--font-body);
+  }
+}
+
+@layer utilities {
+  .color-tree-leaf {
+    background-color: var(--color-tree-leaf);
+  }
+  .color-tree-internal {
+    background-color: var(--color-tree-internal);
+  }
+}
+
+/* Root font application */
+:root {
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+/* Apply newspaper styling to body */
+body {
+  /* background: var(--color-newspaper-cream); */
+  font-family: var(--font-body);
+  color: var(--color-newspaper-ink);
+  line-height: 1.6;
+}

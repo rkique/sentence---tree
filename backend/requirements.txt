@@ -1,0 +1,9 @@
+flask
+flask-sqlalchemy
+flask-cors
+sentence-transformers
+transformers
+torch
+dendropy
+pandas
+numpy
