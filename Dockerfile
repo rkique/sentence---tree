@@ -18,7 +18,8 @@ RUN python3 -m venv /opt/venv && \
 # Stage 2: Install Node dependencies  
 FROM base as node-deps
 COPY package*.json ./
-RUN npm ci --only=production --no-audit --progress=false
+#TODO separate dev/prod
+RUN npm ci --no-audit --progress=false
 
 # Final stage
 FROM base as final
