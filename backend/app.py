@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 from models import db, UserInput
-from utils import embed_sentence, is_grammatical, get_perplexity
+from utils import embed_sentence #get_perplexity
 from utils import save_distance_matrix, generate_nj_tree, get_sentence_scores
 import os
 from datetime import datetime
@@ -63,7 +63,7 @@ def check_grammar():
         
         temp_input = type('UserInput', (), {'text': text})()
         perplexity = get_perplexity(text)
-        is_gram = True #is_grammatical(temp_input)
+        is_gram = True
         
         return jsonify({
             'is_grammatical': is_gram,

@@ -1,4 +1,6 @@
-,I love Brown because the green is so pretty this time of year .,I love Brown because the people are great .,I love Brown because it allows creative projects .
-I love Brown because the green is so pretty this time of year .,0.0,0.18075699,0.25367582
-I love Brown because the people are great .,0.18075699,0.0,0.18098849
-I love Brown because it allows creative projects .,0.25367582,0.18098849,0.0
+,I love Brown because the green is so pretty this time of year .,I love Brown because the people are great .,I love Brown because it allows creative projects .,I love Brown because the campus is so pretty .,I love Brown because the buildings look so old .
+I love Brown because the green is so pretty this time of year .,-1.1920929e-07,0.18075705,0.25367582,0.27932334,0.2519524
+I love Brown because the people are great .,0.18075705,0.0,0.18098831,0.20251513,0.22174168
+I love Brown because it allows creative projects .,0.25367582,0.18098831,-1.1920929e-07,0.23825455,0.24590087
+I love Brown because the campus is so pretty .,0.27932334,0.20251513,0.23825455,0.0,0.22973126
+I love Brown because the buildings look so old .,0.2519524,0.22174168,0.24590087,0.22973126,0.0

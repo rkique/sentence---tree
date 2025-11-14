@@ -1,9 +1,7 @@
-flask
-flask-sqlalchemy
-flask-cors
-sentence-transformers
-transformers
-torch --index-url https://download.pytorch.org/whl/cpu
-dendropy
-pandas
-numpy
+flask==2.3.3
+flask-sqlalchemy==3.0.5
+flask-cors==4.0.0
+sentence-transformers==2.2.2
+dendropy==4.6.1
+pandas==2.0.3
+numpy==1.24.3

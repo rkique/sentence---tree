@@ -1,28 +1,28 @@
 
 from sentence_transformers import SentenceTransformer
 import numpy as np
-from transformers import GPT2LMHeadModel, GPT2Tokenizer
+# from transformers import GPT2LMHeadModel, GPT2Tokenizer
+# from models import UserInput
 import torch
 import math
-from models import UserInput
 import pandas as pd
 import dendropy
 
 # Load GPT-2 once
-gpt2_tokenizer = GPT2Tokenizer.from_pretrained("gpt2")
-gpt2_model = GPT2LMHeadModel.from_pretrained("gpt2")
-print('[Utils] GPT-2 model loaded')
-def get_perplexity(sentence):
-    inputs = gpt2_tokenizer(sentence, return_tensors="pt")
-    with torch.no_grad():
-        outputs = gpt2_model(**inputs, labels=inputs["input_ids"])
-        loss = outputs.loss
-    return math.exp(loss.item())
+# gpt2_tokenizer = GPT2Tokenizer.from_pretrained("gpt2")
+# gpt2_model = GPT2LMHeadModel.from_pretrained("gpt2")
+# print('[Utils] GPT-2 model loaded')
+# def get_perplexity(sentence):
+#     inputs = gpt2_tokenizer(sentence, return_tensors="pt")
+#     with torch.no_grad():
+#         outputs = gpt2_model(**inputs, labels=inputs["input_ids"])
+#         loss = outputs.loss
+#     return math.exp(loss.item())
 
-def is_grammatical(entry, threshold=1000):
-    perplexity = get_perplexity(entry.text)
-    print(f"Sentence perplexity: {perplexity:.2f}")
-    return perplexity < threshold
+# def is_grammatical(entry, threshold=1000):
+#     perplexity = get_perplexity(entry.text)
+#     print(f"Sentence perplexity: {perplexity:.2f}")
+#     return perplexity < threshold
 
 model_name = 'all-MiniLM-L6-v2'
 model = SentenceTransformer(model_name)
