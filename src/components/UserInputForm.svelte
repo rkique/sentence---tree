@@ -119,7 +119,7 @@
           <circle cx="12" cy="7" r="1.2" fill="currentColor" />
         </svg>
         <div class="info-tooltip">
-          Your job is to craft the most unique sentence you can imagine. You score points based on how <em>different</em> your answer is from everyone else's, as seen on a taxonomic <em>tree</em> of answers. Do you have what it takes to <em>set yourself apart</em>?
+          Share your thoughts and see how they connect with others! Craft a unique response that expresses your perspective. Your answer will be visualized on a <em>phylogenetic tree</em> showing how different opinions branch and relate to each other.
         </div>
       </div>
 
@@ -177,7 +177,7 @@
       <div class="newspaper-edition">Daily Edition • Vol. 1</div>
     </div>
 </header>
-<div class="max-w-4xl mx-auto" style="min-height: calc(100vh - 18rem); display:flex; align-items:center; justify-content:center;">
+<div class="mx-auto" style="min-height: calc(100vh - 18rem); display:flex; align-items:center; justify-content:center;">
   <div class="card-elevated animate-fade-in" style="width:100%;">
     <!-- Newspaper date header -->
     <div class="card-body space-y-1">
@@ -236,6 +236,7 @@
           {/if}
         </button>
       </div>
+      <p class="text-center text-sm text-gray-500 mt-4">A project by  <a href="https://eric-xia.com" target="_blank">(eric-xia.com)</a> Sc.B Math-CS, A.B. Linguistics '26</p>
     </div>
   </div>
 </div>

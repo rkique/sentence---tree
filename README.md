@@ -1,18 +1,9 @@
-# Sentence Tree SPA
+Hi, 
+This is a really good idea I hope it gets used.
 
-A Svelte single-page application that generates phylogenetic trees from user text inputs based on semantic similarity.
 
-## Features
-
-- 📝 Daily prompts from `days.txt`
-- 🧠 Semantic embedding using SentenceTransformers
-- 📊 Grammaticality checking with GPT-2 perplexity
-- 🌳 Neighbor-joining tree generation with DendroPy
-- 🎨 Interactive D3.js force-directed tree visualization
-- 💾 SQLite database for persistent storage
-
+Hope this AI-generated summary helps.
 ## Quick Start
-
 ### Prerequisites
 - Python 3.8+
 - Node.js 16+

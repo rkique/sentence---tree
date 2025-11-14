@@ -36,6 +36,7 @@ def load_daily():
     # days_difference = (today - start_date).days
     days_difference = 0 #15
     daily_prompt = prompts[days_difference % len(prompts)]
+    daily_prompt = 'I love Brown because,.'
     print('[load_daily] loaded')
     return daily_prompt
     
@@ -110,6 +111,7 @@ def submit_input():
         print(f"[submit-input] {error}")
         raise FileNotFoundError(error)
     print(f'[using] {distance_matrix_path}')
+    print(f'[submit_input] user_sentence: {user_sentence}')
     tree = generate_nj_tree(distance_matrix_path, user_input=user_sentence)
     tree_data = convert_tree_to_d3_format(tree)
     
