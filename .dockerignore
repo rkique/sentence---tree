@@ -1,0 +1,91 @@
+# Prevent large files from being copied into Docker build context
+
+# Git files
+.git
+.gitignore
+.gitattributes
+
+# Dependencies (will be installed during build)
+node_modules
+backend/venv
+venv/
+env/
+ENV/
+.venv/
+
+# Python cache
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+*.pdb
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Build outputs
+dist/
+build/
+.svelte-kit/
+
+# Environment files
+.env
+.env.*
+*.env
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Generated images (will regenerate or serve from external storage)
+backend/image_test/generated_images/
+generated_images/
+*.png
+*.jpg
+*.jpeg
+*.gif
+
+# Model cache (models will download during runtime)
+.cache/
+backend/.cache/
+*.safetensors
+huggingface_hub/
+
+# Database files (should use external DB in production)
+*.db
+*.sqlite
+*.sqlite3
+instance/
+
+# Distance matrices (will be regenerated)
+backend/distances/
+
+# Jupyter notebooks
+*.ipynb
+.ipynb_checkpoints
+
+# Logs
+*.log
+logs/
+
+# Documentation (not needed in image)
+*.md
+README.md
+LICENSE
+
+# Test files
+test/
+tests/
+**/*_test.py
+**/*_spec.py
+
+# Large CSV files
+*.csv
+
+# Backup files
+*.backup
+*.bak

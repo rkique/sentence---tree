@@ -1,6 +1,9 @@
 flask==2.3.3
 flask-sqlalchemy==3.0.5
 flask-cors==4.0.0
+# Install CPU-only PyTorch FIRST to prevent CUDA version (saves ~3.5GB)
+torch --index-url https://download.pytorch.org/whl/cpu
+# sentence-transformers will use the CPU PyTorch we just installed
 sentence-transformers==2.2.2
 dendropy==4.6.1
 pandas==2.0.3

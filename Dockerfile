@@ -5,7 +5,8 @@ FROM node:18-bullseye-slim as base
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
       python3 python3-pip python3-venv lsof bash ca-certificates curl && \
-    rm -rf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/* && \
+    apt-get clean
 
 WORKDIR /app
 
@@ -13,13 +14,17 @@ WORKDIR /app
 FROM base as python-deps
 COPY backend/requirements.txt /tmp/requirements.txt
 RUN python3 -m venv /opt/venv && \
-    /opt/venv/bin/pip install --no-cache-dir -r /tmp/requirements.txt
+    /opt/venv/bin/pip install --no-cache-dir -r /tmp/requirements.txt && \
+    # Clean up pip cache and unnecessary files
+    rm -rf /root/.cache/pip && \
+    find /opt/venv -type d -name __pycache__ -exec rm -rf {} + 2>/dev/null || true && \
+    find /opt/venv -type f -name "*.pyc" -delete
 
 # Stage 2: Install Node dependencies  
 FROM base as node-deps
 COPY package*.json ./
-#TODO separate dev/prod
-RUN npm ci --no-audit --progress=false
+RUN npm ci --only=production --no-audit --no-fund --progress=false && \
+    npm cache clean --force
 
 # Final stage
 FROM base as final
