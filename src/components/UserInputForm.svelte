@@ -221,20 +221,21 @@
           {errorMessage}
         </div>
       {/if}
-
-      <div class="flex gap-4 mt-6">
-        <button
-          class="btn-primary flex-1"
-          on:click={submitResponse}
-          disabled={isSubmitting || !userResponse.trim()}
-        >
-          {#if isSubmitting}
-            <div class="loading-spinner w-5 h-5 mr-2"></div>
-            Submitting...
-          {:else}
-            Submit
-          {/if}
-        </button>
+      <div class="form-group">
+        <div class="flex gap-4 mt-6 w-1/3 justify-center">
+          <button
+            class="btn-primary flex-1"
+            on:click={submitResponse}
+            disabled={isSubmitting || !userResponse.trim()}
+          >
+            {#if isSubmitting}
+              <div class="loading-spinner w-5 h-5 mr-2"></div>
+              Submitting...
+            {:else}
+              Submit
+            {/if}
+          </button>
+        </div>
       </div>
       <p class="text-center text-sm text-gray-500 mt-4">A project by  <a href="https://eric-xia.com" target="_blank">(eric-xia.com)</a> Sc.B Math-CS, A.B. Linguistics '26</p>
     </div>

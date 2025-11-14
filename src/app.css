@@ -10,22 +10,22 @@
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
-  /* Greyscale newspaper color palette (higher contrast) */
-  --color-newspaper-cream: #f8fafc;       /* very light */
-  --color-newspaper-parchment: #f1f5f9;   /* light paper */
-  --color-newspaper-aged: #e2e8f0;        /* subtle mid */
-  --color-newspaper-sepia: #cbd5e1;       /* light cool gray */
-  --color-newspaper-brown-light: #94a3b8; /* cool gray light */
-  --color-newspaper-brown: #64748b;       /* mid gray */
-  --color-newspaper-brown-dark: #0f172a;  /* deep charcoal (strong contrast) */
-  --color-newspaper-charcoal: #0b1220;    /* near-black for text */
-  --color-newspaper-ink: #030615;         /* primary ink (very dark) */
+  /* Dark theme color palette */
+  --color-newspaper-cream: #1f2937;       /* dark background */
+  --color-newspaper-parchment: #111827;   /* darker paper */
+  --color-newspaper-aged: #374151;        /* subtle mid dark */
+  --color-newspaper-sepia: #4b5563;       /* medium gray */
+  --color-newspaper-brown-light: #9ca3af; /* light gray text */
+  --color-newspaper-brown: #d1d5db;       /* lighter text */
+  --color-newspaper-brown-dark: #f9fafb;  /* very light text (strong contrast) */
+  --color-newspaper-charcoal: #e5e7eb;    /* light for text */
+  --color-newspaper-ink: #f3f4f6;         /* primary text (very light) */
 
-  /* Tree visualization colors - greyscale */
-  --color-tree-leaf: #111827;     /* dark node (leaves) */
-  --color-tree-internal: #6b7280; /* medium gray for internals */
-  --color-tree-link: #374151;     /* link strokes */
-  --color-tree-hover: #0b1220;    /* hover accent */
+  /* Tree visualization colors - dark theme */
+  --color-tree-leaf: #10b981;     /* green for user nodes (leaves) */
+  --color-tree-internal: #9ca3af; /* light gray for internals */
+  --color-tree-link: #6b7280;     /* gray link strokes */
+  --color-tree-hover: #34d399;    /* brighter green hover accent */
 
   /* Status colors - subtle and grayscale-friendly */
   --color-success-50: #f1f5f9;
@@ -84,7 +84,7 @@
 
 /* Custom component classes */
 @layer components {
-  /* Newspaper-style main background */
+  /* Dark theme main background */
   .main-bg {
     background: linear-gradient(145deg, var(--color-newspaper-cream) 0%, var(--color-newspaper-parchment) 100%);
     /* min-height: 100vh; */
@@ -285,9 +285,9 @@
   font-family: "Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
-/* Apply newspaper styling to body */
+  /* Apply dark theme styling to body */
 body {
-  /* background: var(--color-newspaper-cream); */
+  background: var(--color-newspaper-cream);
   font-family: var(--font-body);
   color: var(--color-newspaper-ink);
   line-height: 1.6;
