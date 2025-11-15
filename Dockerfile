@@ -23,7 +23,8 @@ RUN python3 -m venv /opt/venv && \
 # Stage 2: Install Node dependencies  
 FROM base as node-deps
 COPY package*.json ./
-RUN npm ci --only=production --no-audit --no-fund --progress=false && \
+# Install ALL dependencies (including devDependencies for Vite)
+RUN npm ci --no-audit --no-fund --progress=false && \
     npm cache clean --force
 
 # Final stage
