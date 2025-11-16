@@ -3,8 +3,8 @@ flask-sqlalchemy==3.0.5
 flask-cors==4.0.0
 # CPU-only torch (no CUDA dependencies)
 --extra-index-url https://download.pytorch.org/whl/cpu
-torch==2.1.2+cpu
-torchvision==0.16.2+cpu
+torch==2.5.1+cpu
+torchvision==0.20.1+cpu
 sentence-transformers==2.7.0
 dendropy==4.6.1
 pandas==2.0.3
