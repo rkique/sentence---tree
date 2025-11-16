@@ -13,6 +13,7 @@ WORKDIR /app
 # Stage 1: Install Python dependencies
 FROM base as python-deps
 COPY backend/requirements.txt /tmp/requirements.txt
+
 RUN python3 -m venv /opt/venv && \
     /opt/venv/bin/pip install --no-cache-dir -r /tmp/requirements.txt && \
     # Clean up pip cache and unnecessary files
@@ -23,6 +24,7 @@ RUN python3 -m venv /opt/venv && \
 # Stage 2: Install Node dependencies  
 FROM base as node-deps
 COPY package*.json ./
+
 # Install ALL dependencies (including devDependencies for Vite)
 RUN npm ci --no-audit --no-fund --progress=false && \
     npm cache clean --force
