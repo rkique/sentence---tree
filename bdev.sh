@@ -19,7 +19,6 @@ trap cleanup EXIT INT TERM
 # Activate virtual environment
 source /opt/venv/bin/activate
 
-pip list
 
 # Change to backend directory
 cd backend

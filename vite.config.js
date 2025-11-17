@@ -10,7 +10,7 @@ export default defineConfig({
     allowedHosts: ['urchin-app-2-mzfse.ondigitalocean.app'],
     proxy: {
       '/api': {
-        target: 'http://localhost:5001',
+        target: process.env.BACKEND_URL || 'http://127.0.0.1:5001',
         changeOrigin: true
       }
     },
