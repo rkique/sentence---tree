@@ -16,12 +16,22 @@ cleanup() {
 # Set trap to run cleanup on script exit
 trap cleanup EXIT INT TERM
 
+# Activate virtual environment
+source /opt/venv/bin/activate
+
+pip list
+
+# Change to backend directory
+cd backend
+
+# Set Flask environment variables
+export FLASK_APP=app.py
+export FLASK_ENV=development
+
 # Start Flask backend
-cd backend && . venv/bin/activate && python3 app.py &
+python3 app.py &
 FLASK_PID=$!
-
 echo "Flask server started with PID: $FLASK_PID"
-echo "Press Ctrl+C to stop the server"
 
-# Wait for the Flask process to finish
+# Wait for Flask to finish
 wait $FLASK_PID

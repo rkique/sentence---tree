@@ -1,7 +1,7 @@
 # Multi-stage build to reduce final image size
-FROM node:18-bullseye-slim as base
+FROM node:18-bookworm-slim as base
 
-# Install system dependencies
+# Install system dependencies including Python 3.11
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
       python3 python3-pip python3-venv lsof bash ca-certificates curl && \
@@ -10,18 +10,7 @@ RUN apt-get update && \
 
 WORKDIR /app
 
-# Stage 1: Install Python dependencies
-FROM base as python-deps
-COPY backend/requirements.txt /tmp/requirements.txt
-
-RUN python3 -m venv /opt/venv && \
-    /opt/venv/bin/pip install --no-cache-dir -r /tmp/requirements.txt && \
-    # Clean up pip cache and unnecessary files
-    rm -rf /root/.cache/pip && \
-    find /opt/venv -type d -name __pycache__ -exec rm -rf {} + 2>/dev/null || true && \
-    find /opt/venv -type f -name "*.pyc" -delete
-
-# Stage 2: Install Node dependencies  
+# Stage 1: Install Node dependencies  
 FROM base as node-deps
 COPY package*.json ./
 
@@ -31,17 +20,23 @@ RUN npm ci --no-audit --no-fund --progress=false && \
 
 # Final stage
 FROM base as final
-COPY --from=python-deps /opt/venv /opt/venv
 COPY --from=node-deps /app/node_modules ./node_modules
 
 # Copy application code
 COPY . /app
 
+# Create necessary directories
+RUN mkdir -p /app/backend/distances
+
+# Create venv and install Python dependencies in final stage
+RUN python3 -m venv /opt/venv && \
+    /opt/venv/bin/pip install --upgrade pip && \
+    /opt/venv/bin/pip install --no-cache-dir -r /app/backend/requirements.txt && \
+    rm -rf /root/.cache/pip
+
 # Make scripts executable
 RUN chmod +x /app/bdev.sh /app/dev.sh /app/run.sh
 
-# Update scripts to use the virtual environment
-RUN sed -i 's|venv/bin/activate|/opt/venv/bin/activate|g' /app/bdev.sh
 
 EXPOSE 5001 3000
 
